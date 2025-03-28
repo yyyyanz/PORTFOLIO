@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">
+    <title>Yanz's Portfolio</title>
+    <style>
+        
+        
+      /* 헤더 스타일 */
+      header {
+        width: 100%; /* 너비를 페이지 전체로 */
+        height: 100px; /* 높이를 100px로 변경 */
+        background-color: #1d1d1d; /* 배경색 (어두운 회색) */
+        color: white; /* 텍스트 색상 */
+        display: flex; /* 플렉스 박스를 사용하여 정렬 */
+        justify-content: flex-start; /* 왼쪽 정렬 (햄버거 아이콘 위치) */
+        align-items: center; /* 세로 방향 가운데 정렬 */
+        position: fixed; /* 상단에 고정 */
+        top: 0; /* 상단에서 0 위치 */
+        left: 0; /* 왼쪽에서 0 위치 */
+        z-index: 1000; /* 다른 요소들 위에 위치 */
+        padding: 0 20px; /* 좌우 패딩 추가 */
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* 하단 그림자 */
+        
+      }
+
+     
+
+      /* 햄버거 아이콘 스타일 */
+      .hamburger {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        width: 30px;
+        height: 20px;
+      }
+
+      .hamburger div {
+        height: 4px; /* 햄버거 아이콘의 선 높이 */
+        background-color: white; /* 햄버거 아이콘 색상 */
+        border-radius: 2px; /* 선의 끝을 둥글게 */
+      }
+
+      /* 제목 가운데 정렬 */
+      .title {
+        position: absolute; /* 제목을 고정시킴 */
+        left: 50%; /* 제목을 화면의 50% 위치로 */
+        transform: translateX(-50%); /* 제목을 정확히 중앙에 배치 */
+        font-size: 2.5em; /* 큰 제목 글자 크기 */
+      }
+
+      /* 본문 내용 */
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+      }
+
+      /* 콘텐츠가 헤더 뒤로 가려지지 않도록 padding 설정 */
+      .content {
+        padding-top: 120px; /* 헤더 높이만큼 패딩 추가 */
+        text-align: center; /* 본문도 가운데 정렬 */
+      }
+
+      /* 기본 스타일 */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+      }
+
+
+      /* 카드 섹션 컨테이너 */
+      .card-container {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr); /* 3개의 열로 카드 배치 */
+        gap: 40px; /* 카드 사이 간격 */
+        padding: 10px 10px; /* 카드 섹션의 패딩 */
+        justify-items: center; /* 카드 가운데 정렬 */
+      }
+
+      /* 카드 스타일 */
+      .card {
+        background-color: #fff;
+        border-radius: 10px; /* 둥근 테두리 */
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* 카드 그림자 */
+        overflow: hidden;
+        width: 100%; /* 카드 너비 */
+        height: 100%; /* 카드 높이 */
+        max-height: 800px;
+        min-height: 500PX;
+        transition: transform 0.3s ease-in-out; /* 호버 효과 */
+        text-align: justify;
+        
+      }
+
+      .card:hover {
+        transform: scale(1.05); /* 호버 시 카드 확대 */
+      }
+
+      .card img {
+        width: 100%;
+        max-height: 500px; /* 이미지 높이 */
+        object-fit: cover; /* 이미지 크기 자동 맞추기 */
+      }
+
+      .card-content {
+        padding: 15px;
+      }
+
+      .card h3 {
+        font-size: 1.5em;
+        margin-bottom: 10px;
+      }
+
+      .card p {
+        font-size: 1em;
+        color: #555;
+        line-height: 1.6;
+      }
+
+      /* 반응형 웹 스타일 - 화면 크기 768px 이하일 때 */
+      @media (max-width: 768px) {
+        .card-container {
+          grid-template-columns: repeat(
+            2,
+            1fr
+          ); /* 화면이 좁을 때 2개의 열로 변경 */
+        }
+      }
+
+      /* 반응형 웹 스타일 - 화면 크기 480px 이하일 때 */
+      @media (max-width: 480px) {
+        .card-container {
+          grid-template-columns: 1fr; /* 화면이 더 좁을 때 1개의 열로 변경 */
+        }
+      }
+
+        /* 반응형 이미지 */
+        .responsive-image {
+            width: 100%; /* 부모 요소의 너비에 맞춤 */
+            height: auto; /* 높이는 자동으로 비율을 유지 */
+            max-height: 600px;
+            object-fit: cover; /* 이미지가 잘리더라도 비율을 유지하며 꽉 채움 */
+            border-radius: 10px; /* 둥근 테두리 */
+        }
+
+        .image-contaier {
+            width: 100%; /* 부모 요소의 너비에 맞춤 */
+            height: auto; /* 높이는 자동으로 비율을 유지 */
+            object-fit: cover; /* 이미지가 잘리더라도 비율을 유지하며 꽉 채움 */
+            border-radius: 10px; /* 둥근 테두리 */
+        }
+
+    </style>
+    </style>
+  </head>
+  <body>
+    <!-- 상단 헤더 -->
+    <header>
+      <!-- 햄버거 아이콘 -->
+      <div class="hamburger">
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+
+      <!-- 포트폴리오 제목 (가운데 정렬) -->
+      <span class="title">Yanz's Portfolio</span>
+    </header>
+
+    <!-- 본문 콘텐츠 -->
+    <div class="content">
+      <!-- 본문 전 이미지 보여주기 -->
+      <div class="image-container">
+        <img width="100%"
+        height="1000px"
+        src="새 문서_1.png" alt="디자인 포트폴리오 페이지" class="responsive-image">
+    </div>
+  
+    <!-- 카드 섹션 -->
+    <div class="card-container">
+      <!-- 카드 1 -->
+      <div class="card">
+        <img src="스타벅스 UX 개선 프로젝트.png" alt="스타벅스 ux 개선 프로젝트 이미지" />
+        <div class="card-content">
+          <h3>스타벅스 UX 개선 프로젝트</h3>
+          <p>
+            스타벅스 앱의 사이렌 오더에서 발생하는 대기시간 문제를 분석하여 사용자 니즈를 파악하였습니다. 공감하기(AEIOU), 정의하기(Affinity Diagram), 아이디어 발산, 사용자 테스트(UT) 등 다양한 UX 방법론을 적용해 심층적으로 분석한 결과, 이를 바탕으로 대기시간 문제를 효과적으로 해결할 수 있는 개선안을 제시합니다.
+          </p>
+        </div>
+      </div>
+
+      
+      <!-- 카드 2 -->
+      <div class="card">
+        <img src="티빙 UI 개선 프로젝트.png" alt="티빙 UI 개선 프로젝트" />
+        <div class="card-content">
+          <h3>티빙 UI 개선 프로젝트</h3>
+          <p>
+            이 프로젝트는 반응형 레이아웃을 활용하여 다양한 화면 크기에서 적절한
+            디자인을 제공합니다.
+          </p>
+        </div>
+      </div>
+
+      <!-- 카드 3 -->
+      <div class="card">
+        <img src="https://i.pinimg.com/736x/44/82/3e/44823e36bdf35ef7ef62de3da6d64216.jpg" alt="강아지 이미지 3" />
+        <div class="card-content">
+          <h3>프로젝트 제목 3</h3>
+          <p>
+            이 프로젝트는 JavaScript를 활용하여 사용자 인터랙션을 추가한 웹
+            애플리케이션입니다.
+          </p>
+        </div>
+      </div>
+
+      <!-- 카드 4 -->
+      <div class="card">
+        <img src="https://i.pinimg.com/736x/44/82/3e/44823e36bdf35ef7ef62de3da6d64216.jpg" alt="강아지 이미지 4" />
+        <div class="card-content">
+          <h3>프로젝트 제목 4</h3>
+          <p>
+            이 프로젝트는 웹 애니메이션을 활용하여 다양한 시각적 효과를
+            구현했습니다.
+          </p>
+        </div>
+      </div>
+
+      <!-- 카드 5 -->
+      <div class="card">
+        <img src="https://i.pinimg.com/736x/44/82/3e/44823e36bdf35ef7ef62de3da6d64216.jpg" alt="강아지 이미지 5" />
+        <div class="card-content">
+          <h3>프로젝트 제목 5</h3>
+          <p>
+            이 프로젝트는 CSS Grid 레이아웃을 사용하여 반응형 웹사이트를 구축한
+            예시입니다.
+          </p>
+        </div>
+      </div>
+
+      <!-- 카드 6 -->
+      <div class="card">
+        <img src="https://i.pinimg.com/736x/44/82/3e/44823e36bdf35ef7ef62de3da6d64216.jpg" alt="강아지 이미지 6" />
+        <div class="card-content">
+          <h3>프로젝트 제목 6</h3>
+          <p>
+            이 프로젝트는 웹 사이트 디자인과 프로토타입을 제작하는
+            프로젝트입니다.
+          </p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
